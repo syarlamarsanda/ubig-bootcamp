@@ -1,0 +1,96 @@
+.bento-item {
+    border: 2px solid #333; /* tebelnya 2px */
+    border-radius: 10px;/* sudut lengkunganya 10px */
+    padding: 16px;/* jarak antara dinding sama isinya */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bento-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 2rem);/* jarak antar sekat */
+    padding: clamp(1.5rem, 3vw, 3rem);
+
+}
+.box-gohan{
+    grid-column: span 2;
+    min-height: clamp(200px, 25vw, 320px);
+}
+.box-skewer{
+    grid-column: 3;
+    grid-row: 1/span 2;
+    min-height: clamp(420px, 52vw, 660px);
+}
+.box-okazu{
+    grid-column: span 1;
+    min-height: clamp(180px, 22vw, 280px);
+}
+.box-dessert{
+    grid-column: span 1;
+    min-height: clamp(180px, 22vw, 280px);
+}
+@media (max-width: 1024px){
+    .bento-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .box-skewer {
+        grid-column: 1;
+        grid-row: 2 / span 2;
+    }
+}
+@media (max-width: 767px){
+    .bento-container{
+        grid-template-columns: 1fr;
+    }
+    .box-gohan{
+        grid-column: span 1;
+    }
+    .box-skewer{
+        grid-column: 1;
+        grid-row: 2;
+    }
+}
+.bento-left{
+    display: contents;
+}
+.bento-container.mode-flex{
+    display: flex;
+}
+
+.mode-flex .bento-left {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+    flex-wrap: wrap;
+    gap: clamp(1rem, 2vw, 2rem);
+}
+
+.mode-flex .box-skewer{
+    flex: 0 0 32%;
+    box-sizing: border-box;
+}
+
+.mode-flex .box-gohan{
+    flex-basis: 100%;
+}
+
+.mode-flex .box-okazu,
+.mode-flex .box-dessert{
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+@media (max-width: 767px){
+    .bento-container.mode-flex{
+        flex-direction: column;
+    }
+    .mode-flex .bento-left{
+        display: contents;
+    }
+    .mode-flex .box-gohan   { order: 1; }
+    .mode-flex .box-skewer  { order: 2; }
+    .mode-flex .box-okazu   { order: 3; }
+    .mode-flex .box-dessert { order: 4; } 
+}
