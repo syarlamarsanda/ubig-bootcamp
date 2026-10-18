@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOMailer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app">
+        <!-- header + counter (feature 1) -->
+        <header class="app-header">
+            <div>
+                <h1>DOMailer</h1>
+                <p class="tagline">Next-Gen Email Workspace</p>
+            </div>
+            <p class="counters">
+                Unread: <strong id="unread-count">0</strong> |
+                Starred: <strong id="starred-count">0</strong>
+            </p>
+        </header>
+
+        <!-- search + filter + compose (feature 4 & 5) -->
+        <div class="toolbar">
+            <input type="search" id="search-input" placeholder="Search by sender or subject..." aria-label="Cari email">
+            <div class="filter-group">
+                <button type="button" class="filter-btn active" data-filter="all">All</button>
+                <button type="button" class="filter-btn" data-filter="unread">Unread</button>
+                <button type="button" class="filter-btn" data-filter="starred">Starred</button>
+                <button type="button" id="btn-compose" class="btn-compose">+ Compose</button>
+            </div>
+        </div>
+
+        <!-- bulk action bar, cuma muncul kalo ada yang dicentang (feature 2) -->
+        <div id="bulk-bar" class="bulk-bar hidden">
+            <span id="selected-count">0 item(s) selected</span>
+            <button type="button" id="btn-mark-read" class="btn btn-blue">Mark as Read</button>
+            <button type="button" id="btn-delete-selected" class="btn btn-red">Delete Selected</button>
+        </div>
+
+        <!-- tabel email. isi tbody nya dibikin dari js -->
+        <div class="table-wrap">
+            <table class="email-table">
+                <thead>
+                    <tr>
+                        <th class="col-check"><input type="checkbox" id="select-all" aria-label="Pilih semua email"></th>
+                        <th class="col-star">★</th>
+                        <th>Sender</th>
+                        <th>Subject &amp; Content</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="email-list"></tbody>
+            </table>
+            <p id="empty-state" class="empty-state hidden">Ga ada email yang cocok.</p>
+        </div>
+    </main>
+
+    <!-- modal compose (feature 5) -->
+    <div id="compose-modal" class="modal-overlay hidden">
+        <form id="compose-form" class="modal" role="dialog" aria-modal="true" aria-labelledby="compose-title">
+            <h2 id="compose-title">Compose Email</h2>
+            <label>Dari
+                <input type="text" id="compose-sender" required>
+            </label>
+            <label>Subjek
+                <input type="text" id="compose-subject" required>
+            </label>
+            <label>Isi
+                <textarea id="compose-body" rows="5" required></textarea>
+            </label>
+            <p class="hint">Coba tulis URGENT atau IMPORTANT di subjek, nanti muncul tag merah.</p>
+            <div class="modal-actions">
+                <button type="button" id="btn-cancel" class="btn btn-ghost">Batal</button>
+                <button type="submit" class="btn btn-blue">Kirim</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
