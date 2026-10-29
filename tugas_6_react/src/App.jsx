@@ -66,7 +66,7 @@ function Beranda() {
         <section>
             <h2>Halo! 👋</h2>
             <p>Pilih materi di samping kiri. Tiap materi kodenya ada di folder <code>src/materi</code></p>
-            <p>Materi 10 &amp; 11 ngambil data dari API Laravel di <code>latihan_laravel</code></p>
+            <p>Materi 10 &amp; 11 ngambil data dari API Laravel di <code>tugas_7_laravel</code></p>
         </section>
     );
 }

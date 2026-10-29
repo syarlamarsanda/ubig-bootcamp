@@ -13,7 +13,7 @@ export default function Materi10() {
                 const res = await api.get('/m07/siswa'); // GET http://127.0.0.1:8000/api/m07/siswa
                 setSiswa(res.data.data); 
             } catch (err) {
-                setError('Gagal ambil data. Udah jalanin php artisan serve di latihan_laravel belum?');
+                setError('Gagal ambil data. Udah jalanin php artisan serve di tugas_7_laarevl belum?');
             } finally {
                 setLoading(false); 
             }
